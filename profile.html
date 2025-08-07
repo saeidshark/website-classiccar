@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <title>پروفایل کاربر</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <h2>پروفایل من</h2>
+
+  <div id="user-info">
+    <p>نام کاربری: <span id="username"></span></p>
+    <p>ایمیل: <span id="email"></span></p>
+  </div>
+
+  <hr>
+
+  <h3>سفارش‌های من</h3>
+  <table border="1" cellspacing="0" cellpadding="5">
+    <thead>
+      <tr>
+        <th>کد سفارش</th>
+        <th>محصول</th>
+        <th>قیمت</th>
+        <th>تاریخ</th>
+        <th>وضعیت</th>
+      </tr>
+    </thead>
+    <tbody id="orders-body">
+      <tr><td colspan="5">در حال بارگذاری...</td></tr>
+    </tbody>
+  </table>
+
+  <script src="js/profile.js"></script>
+</body>
+</html>

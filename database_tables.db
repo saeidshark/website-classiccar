@@ -1,0 +1,64 @@
+CREATE TABLE products (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    description TEXT,
+    price DECIMAL(10,2),
+    image VARCHAR(255)
+);
+
+CREATE TABLE orders (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    product_id INT,
+    order_date DATE,
+    status VARCHAR(50)
+);
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE addresses (
+id INT AUTO_INCREMENT PRIMARY KEY,
+user_id INT NOT NULL,
+recipient_name VARCHAR(100) NOT NULL,
+phone VARCHAR(20) NOT NULL,
+full_address TEXT NOT NULL,
+city VARCHAR(50) NOT NULL,
+province VARCHAR(50) NOT NULL,
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+-------------------------------------------------------------------------------
+query random info
+
+
+INSERT INTO products (name, description, price, image) VALUES
+('Ford Mustang 1969', 'خودروی کلاسیک با موتور V8 و طراحی افسانه‌ای', 25000.00, 'mustang1969.jpg'),
+('Chevrolet Camaro 1970', 'رقیب سرسخت موستانگ با قدرت بالا', 27000.00, 'camaro1970.jpg'),
+('Dodge Charger 1968', 'یکی از محبوب‌ترین ماسل‌کارها با طراحی خشن', 29000.00, 'charger1968.jpg'),
+('Pontiac GTO 1967', 'یکی از اولین خودروهای ماسل واقعی آمریکا', 26500.00, 'gto1967.jpg'),
+('Chevrolet Corvette 1963', 'کوروت استینگری با طراحی دو پنجره عقب معروف', 33000.00, 'corvette1963.jpg'),
+('Plymouth Barracuda 1971', 'ظاهر منحصربه‌فرد با قدرت بالای پیشرانه', 24500.00, 'barracuda1971.jpg'),
+('Buick GSX 1970', 'خودروی عضلانی لوکس با موتور 455 اینچ مکعبی', 31000.00, 'buickgsx1970.jpg'),
+('AMC Javelin 1973', 'مدل نایاب از برند AMC با طراحی متمایز', 21000.00, 'javelin1973.jpg'),
+('Oldsmobile 442 1969', 'قدرت، راحتی و ظاهر اصیل آمریکایی در یک خودرو', 28500.00, 'oldsmobile442.jpg'),
+('Mercury Cougar 1967', 'برادر لوکس‌تر موستانگ با طراحی متفاوت', 26000.00, 'cougar1967.jpg');
+
+
+
+INSERT INTO addresses (user_id, recipient_name, phone, full_address, city, province)
+VALUES
+-- آدرس‌های کاربر اول
+(1, 'علی رضایی', '09121234567', 'خیابان ولیعصر، پلاک ۱۲، واحد ۳', 'تهران', 'تهران'),
+(1, 'علی رضایی', '09121234567', 'خیابان آزادی، کوچه شهید فلاح، پلاک ۲۵', 'تهران', 'تهران'),
+
+-- آدرس‌های کاربر دوم
+(2, 'سارا کریمی', '09351234567', 'بلوار استقلال، کوچه بهار، پلاک ۸', 'مشهد', 'خراسان رضوی'),
+(2, 'سارا کریمی', '09351234567', 'خیابان امام خمینی، ساختمان الماس، طبقه ۵', 'مشهد', 'خراسان رضوی');

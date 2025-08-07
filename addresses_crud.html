@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>آدرس‌های من</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <h2>آدرس‌های ثبت‌شده</h2>
+  <button onclick="openAddressForm()">➕ افزودن آدرس جدید</button>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>نام گیرنده</th>
+        <th>شماره تماس</th>
+        <th>آدرس کامل</th>
+        <th>شهر</th>
+        <th>استان</th>
+        <th>عملیات</th>
+      </tr>
+    </thead>
+    <tbody id="address-body">
+      <!-- آدرس‌ها با جاوااسکریپت پر می‌شوند -->
+    </tbody>
+  </table>
+
+  <!-- فرم افزودن/ویرایش -->
+  <div id="address-form" style="display:none; margin-top: 20px;">
+    <h3 id="form-title">افزودن آدرس</h3>
+    <form onsubmit="saveAddress(event)">
+      <input type="hidden" id="address-id">
+      <label>نام گیرنده: <input type="text" id="receiver" required></label><br>
+      <label>شماره تماس: <input type="tel" id="phone" required></label><br>
+      <label>آدرس کامل: <textarea id="full_address" required></textarea></label><br>
+      <label>شهر: <input type="text" id="city" required></label><br>
+      <label>استان: <input type="text" id="province" required></label><br>
+      <button type="submit">ذخیره</button>
+      <button type="button" onclick="cancelEdit()">لغو</button>
+    </form>
+  </div>
+
+  <script src="js/addresses_crud.js"></script>
+</body>
+</html>
